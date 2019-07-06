@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+	All Posts with "{{ tags.title|title }}" tag
+{% endblock %}
+
+{% block content %}
+<div class="title container text-center mt-4">All Posts with "{{ tags.title|capfirst }}" tag</div>
+<section class="container">
+	<div class="d-flex justify-content-between flex-wrap">
+		{% for post in objects %}
+		{% include 'blog/include/post_card.html' %}
+	
+	{% endfor %}
+</div>
+	{% if objects.has_other_pages %}
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item {% if not objects.has_previous %}disabled {% endif %}">
+					<a class="page-link" href="?page={{ objects.number|add:-1 }}" tabindex="-1" aria-disabled="true">Previous</a>
+				</li>
+				{% for n in pagin.page_range %}
+				{% if n == 1 or objects.number|add:-1 <= n and n <= objects.number|add:1 or  n == pagin.num_pages %}
+				<li class="page-item  {% if n == objects.number %} active {% endif %}"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+				{% endif %}
+				{% endfor %}
+				<li class="page-item {% if not objects.has_next %} disabled {% endif %}">
+					<a class="page-link" href="?page={{ objects.number|add:1 }}">Next</a>
+				</li>
+			</ul>
+		</nav>
+		{% endif %}
+</section>
+{% endblock %}

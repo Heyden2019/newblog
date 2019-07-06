@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+	{{ posts.title }}
+{% endblock %}
+
+{% block content %}
+
+<section class="container">
+	<div class="card mt-5">
+		<div class="card-header">
+			{{ posts.create_date  }}
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">{{ posts.title }}</h5>
+			<p class="card-text">{{ posts.body }}</p>
+		</div>
+		<div class="card-footer text-muted">
+			Тэги: 
+			{% for tag in posts.tags.all %}
+			<a href="{{ tag.get_main_url }}">{{tag.title}}</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% endblock %}

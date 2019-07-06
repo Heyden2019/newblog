@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Edit tag
+{% endblock %}
+
+{% block content %}
+
+<section class="container mt-5">
+<form action="{{ obj.get_edit_url }}" method="POST">
+{% csrf_token %}
+	{% for every_form in form %}
+	<div class="form-group">
+		{{ every_form.label }}
+		{{ every_form }}
+
+		{% if every_form.errors %}
+		<div class="alert alert-danger p-0">
+			{{ every_form.errors }}
+		</div>
+		{% endif %}
+
+	</div>
+	{% endfor %}
+	<button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+</section>
+
+{% endblock %}

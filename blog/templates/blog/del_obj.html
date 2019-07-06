@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Delete tag "{{ obj.title }}"
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<form action="{{ obj.get_del_url }}" method="POST">
+		{% csrf_token %}
+		<div class="my-5">
+			<h3>
+				Are You sure you want to delete "{{ obj.title }}"?
+			</h3>
+		</div>
+		<div class="answers">
+			<a href="{{ obj.get_main_url }}" class="btn btn-outline-success mr-3">не удалять</a>
+			<button type="submit" class="btn btn-outline-danger">Удалить</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+All tags
+{% endblock%}
+
+{% block content %}
+<section class="container">
+	<div class="title my-5 text-center">
+		<h3>
+			Choose a Tag
+		</h3>
+	</div>
+<div class="list-group d-flex " style="width: 50%; margin: 0 auto;">
+  {% for tag in tags reversed %}
+  <a href="{{ tag.get_main_url }}" class="list-group-item list-group-item-action d-flex justify-content-between">{{ tag.title }}  <span class="badge badge-primary badge-pill" style="padding: .4em .4em;">{{ tag.posts.count }}</span></a>
+  {% endfor %}
+</div>
+</section>
+
+{% endblock %}

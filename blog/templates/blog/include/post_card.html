@@ -1,0 +1,17 @@
+
+<div class="card m-4" style="width: 45%;">
+		<div class="card-header">
+			{{ post.create_date  }}
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">{{ post.title }}</h5>
+			<p class="card-text">{{ post.body|truncatechars:50 }}</p>
+			<a href="{{ post.get_main_url }}" class="btn btn-primary">читать полностью...</a>
+		</div>
+		<div class="card-footer text-muted">
+			Тэги: 
+			{% for tag in post.tags.all %}
+			<a href="{{ tag.get_main_url }}">{{tag.title}}</a>
+			{% endfor %}
+		</div>
+	</div>

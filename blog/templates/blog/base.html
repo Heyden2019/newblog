@@ -1,0 +1,44 @@
+{% extends 'base_all.html' %}
+
+
+{% if user.is_authenticated %}
+{% block admin_options %}
+	<div class="admin_panel">
+		<div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+		
+				<a href="/admin/" class="btn btn-outline-primary">Admin</a>
+				{% if perms.blog.add_posts or perms.blog.add_tags %}
+					<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Create
+					</button>
+					<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+						{% if perms.blog.add_posts %}
+						<a class="dropdown-item" href="{% url 'blog_create_post_url'%}">Post</a>
+						{% endif %}
+						{% if perms.blog.add_tags %}
+						<a class="dropdown-item" href="{% url 'blog_tag_create_url' %}">Tag</a>
+						{% endif %}
+
+					</div>
+				{% endif %}
+
+				{% if perms.blog.change_posts and posts and admin_option %}
+					<a class="btn btn-outline-secondary" href="{{ admin_option.get_edit_url }}">edit</a>
+				{% endif %}
+
+				{% if perms.blog.change_tags and tags and admin_option %}
+					<a class="btn btn-outline-secondary" href="{{ admin_option.get_edit_url }}">edit</a>
+				{% endif %}
+
+				{% if perms.blog.delete_posts and posts and admin_option %}
+					<a class="btn btn-outline-danger" href="{{ admin_option.get_del_url }}">delete</a>
+				{% endif %}
+
+				{% if perms.blog.delete_tags and tags and admin_option %}
+					<a class="btn btn-outline-danger" href="{{ admin_option.get_del_url }}">delete</a>
+				{% endif %}
+
+		</div>
+	</div>
+	{% endblock %}
+	{% endif %}
