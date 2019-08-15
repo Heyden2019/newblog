@@ -65,7 +65,11 @@ class CreateObjectMixin:
 	def post(self, request):
 		bound_form = self.form_model(request.POST)
 		if bound_form.is_valid():
-			new = bound_form.save()
+			new = bound_form.save(commit=False)
+			new.autor = request.user
+			new.save()
+			two = bound_form.save_m2m()
+			print(two)
 			return redirect(self.url_for_redir, new.slug)
 		return render(request, self.url_main, {'form': bound_form})
 

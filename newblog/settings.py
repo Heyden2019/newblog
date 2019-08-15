@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_zw=m^axdxpj3a*ud6#k&2i(f+ixd0lg510)w5s*=^6$j^-p&k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'users',
     'crispy_forms',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL  = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+RECAPTCHA_PUBLIC_KEY  =  '6LeAdbIUAAAAACOf5GI7lR4NR0un-aglIcadryac' 
+RECAPTCHA_PRIVATE_KEY  =  '6LeAdbIUAAAAAIiG2SCg18SnnaJQRtTjSMZXhBR6'

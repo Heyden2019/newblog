@@ -1,7 +1,8 @@
 
 <div class="card m-4" style="width: 45%;">
-		<div class="card-header">
-			{{ post.create_date  }}
+		<div class="card-header justify-content-between py-1 d-flex">
+			<div style="color: blue; font-size: 20px;" class="my-auto">{{ post.autor }}</div>
+			<div style="color: blue;" class="my-auto">{{ post.create_date }}</div>
 		</div>
 		<div class="card-body">
 			<h5 class="card-title">{{ post.title }}</h5>

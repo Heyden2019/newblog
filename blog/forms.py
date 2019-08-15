@@ -65,11 +65,17 @@ class PostForm(forms.ModelForm):
 		if filt_slug:
 			if self.obj_id:
 				if self.obj_id != filt_slug[0].id:
-					print(self.obj_id)
-					print(filt_slug[0].id)
 					raise ValidationError('You shall not edit this title like you do #4"Unique"')
 			else:
 				raise ValidationError('You shall not create this title #2"Unique"')
 		if not n_slug:
 			raise ValidationError('You shall not create this title #3"Empty"')
 		return new_title
+
+
+class CommentForm(forms.ModelForm):
+	class Meta:
+		model = Comments
+		fields = ['comment']
+		widgets = {'comment': forms.Textarea(attrs={'class': 'form-control', 'style': 'height: 70px; resize: none;'})}
+		labels = {'comment': 'Enter your comment:'}

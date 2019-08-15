@@ -22,20 +22,22 @@
 					</div>
 				{% endif %}
 
-				{% if perms.blog.change_posts and posts and admin_option %}
+				{% if admin_option %}
+				{% if perms.blog.change_posts and posts %}
 					<a class="btn btn-outline-secondary" href="{{ admin_option.get_edit_url }}">edit</a>
 				{% endif %}
 
-				{% if perms.blog.change_tags and tags and admin_option %}
+				{% if perms.blog.change_tags and tags %}
 					<a class="btn btn-outline-secondary" href="{{ admin_option.get_edit_url }}">edit</a>
 				{% endif %}
 
-				{% if perms.blog.delete_posts and posts and admin_option %}
+				{% if perms.blog.delete_posts and posts %}
 					<a class="btn btn-outline-danger" href="{{ admin_option.get_del_url }}">delete</a>
 				{% endif %}
 
-				{% if perms.blog.delete_tags and tags and admin_option %}
+				{% if perms.blog.delete_tags and tags %}
 					<a class="btn btn-outline-danger" href="{{ admin_option.get_del_url }}">delete</a>
+				{% endif %}
 				{% endif %}
 
 		</div>
