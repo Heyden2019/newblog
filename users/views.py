@@ -11,7 +11,7 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 def register(request):
 	if request.method == 'POST':
 		form = UserCreationForm_new(request.POST)
-		if form.is_valid() and self.request.recaptcha_is_valid:
+		if form.is_valid():
 			form.save()
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']

@@ -45,7 +45,7 @@
 			{% for comment in comments %}
 			<div style="" class="m-1 p-1">
 				<div style="color: blue; word-wrap: inherit;">{{ comment.author }}:</div>
-				<div>{{ comment.comment }}</div>
+				<div style="word-break: break-all;">{{ comment.comment }}</div>
 			</div>
 			{% endfor%}
 			{% endif %}
